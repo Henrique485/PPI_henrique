@@ -25,7 +25,7 @@ if(isset($_POST['descricao'])){
 $tarefas=[]; 
 
 $sqlSelect = "SELECT * FROM tarefas ORDER BY data_criacao DESC";
-result = $conn->query(query: $sqlSelect);
+$result = $conn->query(query: $sqlSelect);
 
 if ($result -> num_rows > 0) {
     while($row = $result -> fetch_assoc())
