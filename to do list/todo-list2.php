@@ -5,7 +5,7 @@ $usario = 'root';
 $senha = '';
 $database = 'todo_list'; 
 
-$conn = mysqli_connect($localhost,$usario,$senha, $database);
+$conn = new mysqli($localhost,$usario,$senha, $database);
 
 if($conn->connect_error){
     die('Deu erro na conexão'. $conn->connect_error);
@@ -15,11 +15,22 @@ if($conn->connect_error){
 if(isset($_POST['descricao'])){
     $descricao = $conn->real_escape_string($_POST['descricao']);
     $sqlInsert = "INSERT INTO tarefas (descricao) VALUES ('$descricao')"; 
+
+    if($conn->query(query: $sqlInsert) === TRUE);
+        header("location: todo-list2.php");
 }
 # Exclusão de tarefas
 
 
 $tarefas=[]; 
+
+$sqlSelect = "SELECT * FROM tarefas ORDER BY data_criacao DESC";
+result = $conn->query(query: $sqlSelect);
+
+if ($result -> num_rows > 0) {
+    while($row = $result -> fetch_assoc())
+    $tarefas[] = $row;
+}
 # Listar tarefas
 
 
