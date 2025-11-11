@@ -14,7 +14,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
 
         $sql = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
 
-        $lista_usuarios = $mysql->query($sql);
+        $lista_usuarios = $mysqli->query($sql);
         $quantidade = $lista_usuarios->num_rows;
 
         if ($quantidade == 1) {
